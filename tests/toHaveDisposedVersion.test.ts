@@ -234,9 +234,7 @@ Disposed versions were:
         error = e
       }
 
-      expect(stripAnsi(error.message)).toEqual(
-        stripAnsi(`expected version "v-20x20-contain" of "${key}" to have been disposed but no versions were disposed for that key`)
-      )
+      expect(stripAnsi(error.message)).toEqual(stripAnsi(`expected version "v-20x20-contain" of "${key}" to have been disposed but no versions were disposed for that key`))
     })
 
     it('fails if the key version was not disposed', async (): Promise<void> => {

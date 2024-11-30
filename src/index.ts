@@ -179,7 +179,7 @@ function toHaveStored(S: Storage | typeof Storage, file: string, options?: Recor
   }
 
   const fileBuffer = fs.readFileSync(finalFilePath)
-  const fileMd5 = crypto.createHash('md5').update(fileBuffer).digest('hex')
+  const fileMd5 = crypto.createHash('md5').update(new Uint8Array(fileBuffer)).digest('hex')
 
   const instanceStorage = instance
     ? Object.keys(TestEngine.storage).reduce((acc, key) => {
@@ -324,7 +324,7 @@ function toHaveStoredVersion(S: Storage | typeof Storage, file: string, version:
   }
 
   const fileBuffer = fs.readFileSync(finalFilePath)
-  const fileMd5 = crypto.createHash('md5').update(fileBuffer).digest('hex')
+  const fileMd5 = crypto.createHash('md5').update(new Uint8Array(fileBuffer)).digest('hex')
 
   const instanceStorage = Object.keys(TestEngine.storage).reduce((acc, key) => {
     const entry = TestEngine.storage[key]
